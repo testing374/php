@@ -1,0 +1,16 @@
+Javascript呼叫PHP取得JSON檔案內容，回傳更新HTML
+
+<button id="loadBtn">按此動態載入</button>
+<script>
+document.getElementById("loadBtn").addEventListener("click", function () {
+    fetch("loading.php")
+        .then(response => response.json())
+        .then(data => {
+            console.log("Filtered Pokémon:", data); 
+            document.getElementById('data').innerText = data[0]['description'];
+        })
+        .catch(error => console.error("Error fetching data:", error));
+});
+</script>
+
+<p id="data"></p>
